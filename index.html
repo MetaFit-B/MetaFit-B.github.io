@@ -46,6 +46,7 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary-color);
+            text-decoration: none;
         }
 
         .nav-links a {
@@ -53,6 +54,11 @@
             text-decoration: none;
             color: var(--secondary-color);
             font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
         }
 
         .hero {
@@ -104,6 +110,12 @@
             background: var(--light-bg);
         }
 
+        .features h2, .how-it-works h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -117,6 +129,7 @@
             border-radius: 15px;
             text-align: center;
             transition: transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .feature-card:hover {
@@ -158,41 +171,26 @@
             font-weight: 600;
         }
 
-        .pricing {
-            padding: 5rem 5%;
-            background: var(--light-bg);
-            text-align: center;
-        }
-
-        .price-cards {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .price-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            width: 300px;
-            transition: transform 0.3s;
-        }
-
-        .price-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .testimonials {
-            padding: 5rem 5%;
-        }
-
         footer {
             background: var(--secondary-color);
             color: white;
             padding: 4rem 5%;
             text-align: center;
+        }
+
+        .social-icons {
+            margin: 1.5rem 0;
+        }
+
+        .social-icons a {
+            color: white;
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
         }
 
         @media (max-width: 768px) {
@@ -210,18 +208,21 @@
             .nav-links {
                 display: none;
             }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <header class="header">
         <nav class="nav">
-            <div class="logo">MetaFit</div>
+            <a href="index.html" class="logo">MetaFit</a>
             <div class="nav-links">
                 <a href="#features">Características</a>
                 <a href="#how-it-works">Cómo funciona</a>
-                <a href="#pricing">Precios</a>
-                <a href="#testimonials">Testimonios</a>
+                <a href="creadores.html">Creadores</a>
             </div>
         </nav>
     </header>
@@ -233,7 +234,7 @@
             <a href="#" class="cta-button">Empieza gratis</a>
         </div>
         <div class="hero-image">
-            <img src="https://via.placeholder.com/500x400" alt="App Preview">
+            <img src="logo sin fondo.png" alt="App Preview">
         </div>
     </section>
 
@@ -280,14 +281,14 @@
     </section>
 
     <footer>
-        <div class="logo">MetaFit</div>
+        <a href="index.html" class="logo">MetaFit</a>
         <p>Síguenos en redes sociales</p>
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
         </div>
-        <p>© 2023 MetaFit. Todos los derechos reservados</p>
+        <p>© 2025 MetaFit. Todos los derechos reservados Inoxway</p>
     </footer>
 </body>
 </html>
