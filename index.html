@@ -3,292 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MetaFit - Tu Entrenamiento Inteligente</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>El Viaje de Mamá - Feliz Cumpleaños</title>
     <style>
         :root {
-            --primary-color: #6C63FF;
-            --secondary-color: #2F2E41;
-            --accent-color: #FF6584;
-            --light-bg: #F5F5F5;
+            --color-amor: #e74c3c;
+            --color-esperanza: #3498db;
+            --dorado: #FFD700;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            line-height: 1.6;
-            color: var(--secondary-color);
+            background: linear-gradient(160deg, #fff5f5 0%, #ffe3e3 100%);
+            min-height: 100vh;
+            font-family: 'Arial Rounded MT Bold', cursive;
+            overflow-x: hidden;
+            touch-action: manipulation;
         }
 
-        .header {
-            background: white;
-            padding: 1rem 5%;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        .contenedor-principal {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
         }
 
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Autobús animado */
+        .autobus-amor {
+            position: absolute;
+            width: 120px;
+            height: 70px;
+            background: var(--color-amor);
+            border-radius: 15px 25px 25px 15px;
+            left: -20%;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: left 15s linear;
+            animation: balanceo 2s ease-in-out infinite;
+            z-index: 2;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
+        .ventana {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 40px;
+            height: 25px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 5px;
         }
 
-        .nav-links a {
-            margin-left: 2rem;
-            text-decoration: none;
-            color: var(--secondary-color);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .hero {
-            padding: 8rem 5% 4rem;
-            background: linear-gradient(45deg, #6C63FF 0%, #3F3D56 100%);
-            color: white;
-            display: flex;
-            align-items: center;
-            min-height: 90vh;
-        }
-
-        .hero-content {
-            flex: 1;
-            padding-right: 2rem;
-        }
-
-        .hero-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .cta-button {
-            background: var(--accent-color);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: 600;
-            transition: transform 0.3s;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-        }
-
-        .features {
-            padding: 5rem 5%;
-            background: var(--light-bg);
-        }
-
-        .features h2, .how-it-works h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 2.5rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .how-it-works {
-            padding: 5rem 5%;
-        }
-
-        .steps-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .step {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
-            color: white;
+        .rueda {
+            position: absolute;
+            bottom: -10px;
+            width: 25px;
+            height: 25px;
+            background: #2c3e50;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-weight: 600;
+            animation: girar 1.8s linear infinite;
         }
 
-        footer {
-            background: var(--secondary-color);
-            color: white;
-            padding: 4rem 5%;
+        .rueda.izquierda { left: 10px; }
+        .rueda.derecha { right: 10px; }
+
+        /* Ruta del viaje */
+        .ruta-viaje {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--dorado);
+            box-shadow: 0 0 20px var(--dorado);
+        }
+
+        /* Tarjetas de países */
+        .tarjeta-pais {
+            position: absolute;
+            width: 90%;
+            max-width: 300px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s;
+            z-index: 3;
+        }
+
+        .tarjeta-pais img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        #venezuela { top: 15%; left: 5%; }
+        #ecuador { top: 30%; right: 5%; }
+        #colombia { top: 50%; left: 5%; }
+        #chile { bottom: 15%; right: 5%; }
+
+        /* Mensaje final */
+        .mensaje-final {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: rgba(255,255,255,0.98);
+            padding: 25px;
+            border-radius: 20px;
             text-align: center;
+            opacity: 0;
+            transition: all 1s;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            width: 90%;
+            max-width: 400px;
+            z-index: 4;
         }
 
-        .social-icons {
-            margin: 1.5rem 0;
+        .mensaje-final img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 15px auto;
+            border: 3px solid var(--color-amor);
         }
 
-        .social-icons a {
-            color: white;
-            margin: 0 1rem;
-            font-size: 1.5rem;
-            transition: color 0.3s;
+        .confeti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            animation: caer 3s linear infinite;
+            z-index: 1;
         }
 
-        .social-icons a:hover {
-            color: var(--accent-color);
+        @keyframes balanceo {
+            0%, 100% { transform: translateY(-50%) rotate(-3deg); }
+            50% { transform: translateY(-50%) rotate(3deg); }
         }
 
-        @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding-top: 6rem;
-            }
-            
-            .hero-content {
-                padding-right: 0;
-                margin-bottom: 2rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+        @keyframes girar {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes caer {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+
+        @media (min-width: 768px) {
+            .autobus-amor { width: 150px; height: 80px; }
+            .tarjeta-pais { max-width: 350px; }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <a href="index.html" class="logo">MetaFit</a>
-            <div class="nav-links">
-                <a href="#features">Características</a>
-                <a href="#how-it-works">Cómo funciona</a>
-                <a href="creadores.html">Creadores</a>
-            </div>
-        </nav>
-    </header>
+    <div class="contenedor-principal">
+        <div class="ruta-viaje"></div>
+        
+        <div class="autobus-amor">
+            <div class="ventana"></div>
+            <div class="rueda izquierda"></div>
+            <div class="rueda derecha"></div>
+        </div>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Transforma tu cuerpo, mejora tu vida</h1>
-            <p>Consigue tus metas fitness y gana recompensas por cada entrenamiento completado. ¡La app que te motiva a ser tu mejor versión!</p>
-            <a href="https://www.mediafire.com/file/oakzeqaasii4aj5/MetaFIt-1_0_1.apk/file" class="cta-button">Descargar</a>
+        <!-- Tarjetas de países -->
+        <div class="tarjeta-pais" id="venezuela">
+            <h3>🇻🇪 Nuestros Comienzos</h3>
+            <p>Donde aprendimos el valor del esfuerzo y la familia...</p>
+            <img src="inicio.jpg" alt="Nuestro origen">
         </div>
-        <div class="hero-image">
-            <img src="logo sin fondo.png" alt="App Preview">
-        </div>
-    </section>
 
-    <section class="features" id="features">
-        <h2>Características principales</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <i class="fas fa-dumbbell feature-icon"></i>
-                <h3>Planes personalizados</h3>
-                <p>Programas de entrenamiento adaptados a tus objetivos y nivel físico</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-trophy feature-icon"></i>
-                <h3>Sistema de recompensas</h3>
-                <p>Gana puntos y premios por completar tus entrenamientos diarios</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-chart-line feature-icon"></i>
-                <h3>Seguimiento detallado</h3>
-                <p>Monitoriza tu progreso con estadísticas y gráficos avanzados</p>
-            </div>
+        <div class="tarjeta-pais" id="ecuador">
+            <h3>🇪🇨 Nuevas Oportunidades</h3>
+            <p>Donde tus manos construyeron nuestro futuro...</p>
+            <img src="esperanza.jpg" alt="Trabajo duro">
         </div>
-    </section>
 
-    <section class="how-it-works" id="how-it-works">
-        <h2>Cómo funciona</h2>
-        <div class="steps-container">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h3>Elige tu plan</h3>
-                <p>Selecciona entre diferentes programas de entrenamiento</p>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h3>Entrena diario</h3>
-                <p>Sigue las rutinas guiadas por expertos</p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h3>Gana recompensas</h3>
-                <p>Desbloquea premios y logros por tu constancia</p>
-            </div>
+        <div class="tarjeta-pais" id="colombia">
+            <h3>🇨🇴 Lecciones de Vida</h3>
+            <p>Donde cada reto nos hizo más fuertes...</p>
+            <img src="superacion.jpg" alt="Superando obstáculos">
         </div>
-    </section>
 
-    <footer>
-        <a href="index.html" class="logo">MetaFit</a>
-        <p>Síguenos en redes sociales</p>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
+        <div class="tarjeta-pais" id="chile">
+            <h3>🇨🇱 Nuestro Hogar</h3>
+            <p>Donde finalmente encontramos paz...</p>
+            <img src="hogar.jpg" alt="Hogar seguro">
         </div>
-        <p>© 2025 MetaFit. Todos los derechos reservados Inoxway</p>
-    </footer>
+
+        <!-- Mensaje final -->
+        <div class="mensaje-final">
+            <h1 style="color: var(--color-amor);">¡Feliz Cumpleaños Mamá! 🎂</h1>
+            <img src="mama.jpg" alt="La mejor mamá">
+            <p style="line-height: 1.6; margin: 15px 0; color: #444;">
+                Gracias por ser nuestro motor, nuestra roca firme<br> 
+                y nuestro ejemplo de amor incondicional.<br><br>
+                Cada sacrificio, cada lágrima y cada sonrisa<br>
+                valieron la pena porque nos diste el mejor regalo:<br>
+                ¡Una familia unida!<br><br>
+                Te amamos más allá de las palabras ❤️
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function iniciarAnimacion() {
+            const autobus = document.querySelector('.autobus-amor');
+            const tarjetas = document.querySelectorAll('.tarjeta-pais');
+            const mensajeFinal = document.querySelector('.mensaje-final');
+
+            // Animación del autobús
+            autobus.style.left = '120%';
+
+            // Mostrar tarjetas
+            tarjetas.forEach((tarjeta, index) => {
+                setTimeout(() => {
+                    tarjeta.style.opacity = '1';
+                    tarjeta.style.transform = 'translateY(0)';
+                    setTimeout(() => tarjeta.style.opacity = '0', 3000);
+                }, index * 3500);
+            });
+
+            // Mostrar mensaje final
+            setTimeout(() => {
+                mensajeFinal.style.opacity = '1';
+                mensajeFinal.style.transform = 'translate(-50%, -50%) scale(1)';
+                crearConfeti();
+            }, 15000);
+        }
+
+        function crearConfeti() {
+            const colores = ['#e74c3c', '#3498db', '#2ecc71', '#f1c40f', '#9b59b6'];
+            for(let i = 0; i < 100; i++) {
+                const confeti = document.createElement('div');
+                confeti.className = 'confeti';
+                confeti.style.cssText = `
+                    left: ${Math.random() * 100}%;
+                    background: ${colores[Math.floor(Math.random() * colores.length)]};
+                    animation-delay: ${Math.random() * 2}s;
+                    border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
+                `;
+                document.body.appendChild(confeti);
+            }
+        }
+
+        // Iniciar al hacer clic en cualquier parte
+        document.body.onclick = iniciarAnimacion;
+    </script>
 </body>
 </html>
